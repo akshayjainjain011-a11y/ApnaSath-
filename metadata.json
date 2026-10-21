@@ -1,0 +1,9 @@
+{
+  "name": "ApnaSaath - Companionship for India's 55+",
+  "description": "An empathetic, accessible, multilingual companionship and social connection platform for India's 55+ generation with AI Saathi, friend discovery, and Saath Circle.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

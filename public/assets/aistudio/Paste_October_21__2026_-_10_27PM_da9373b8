@@ -1,0 +1,510 @@
+# MASTER PRODUCT BUILD PROMPT: Project ApnaSaath
+## An AI-Powered Companionship & Social Connection Platform for India's 55+ Generation
+
+### 1. YOUR ROLE
+
+Act as a world-class product strategist, senior UX/UI designer, full-stack engineer, AI architect, accessibility specialist, trust-and-safety expert, and startup growth strategist.
+
+Build a production-minded, mobile-first application for adults aged 55 and above in India. The application must help users feel heard, socially connected, respected, entertained, and confident using technology.
+
+Do not build just a landing page or a static UI mockup. Build a functional application with authentication, persistent data, profile creation, AI companionship, real-time voice/video communication, matching, moderation, and an administrative dashboard. Clearly identify any features that require external service credentials or are not yet operational.
+
+**Working product name:** ApnaSaath  
+**Tagline:** "Har din, ek apna saath."  
+English tagline: "A little more connection. Every day."
+
+The name is provisional and must undergo trademark, domain, and brand-availability checks before commercial use.
+
+### 2. PRODUCT VISION
+
+Create India's most approachable digital companionship platform for people aged 55+.
+
+The platform should combine three experiences:
+
+1. **AI Saathi:** An empathetic, multilingual AI companion available whenever the user wants to talk.
+2. **Apne Log:** A trusted community where older adults can discover compatible people and make genuine friendships across India.
+3. **Saath Circle:** Interest-based group conversations, cultural gatherings, storytelling, music, hobbies, and community activities.
+
+The product must never communicate that older people are helpless, outdated, or dependent. Present users as independent adults with life experience, interests, aspirations, humour, and stories worth sharing.
+
+The core value proposition is: "You choose when to talk, whom to meet, and how you want to connect."
+
+### 3. TARGET AUDIENCE
+
+Primary users:
+- Adults aged 55 and above living in Indian cities, towns, and smaller communities.
+- Retired professionals, entrepreneurs, homemakers, widowed or single adults, people living alone, and people whose families live in different cities or countries.
+- Users who are comfortable with smartphones as well as first-time or low-confidence digital users.
+- People who prefer communicating in Hindi, English, or their regional language.
+
+Secondary users:
+- Adult children and family members who may help a user get started, with the user's explicit permission.
+- Community partners and trained moderators who help maintain a safe, welcoming environment.
+
+Design for low digital literacy, age-related vision or hearing difficulties, limited dexterity, slower internet connections, and different levels of comfort with technology.
+
+### 4. REGISTRATION, AGE ASSURANCE AND FACE VERIFICATION
+
+Create an extremely simple, welcoming registration flow.
+
+Step 1: Choose the preferred language before entering the app.
+
+Step 2: Show a clear welcome message:
+"Welcome to ApnaSaath. Meet new friends, enjoy meaningful conversations, and find someone to talk to whenever you wish."
+
+Step 3: Offer registration using a mobile number and OTP, with accessible alternatives where feasible.
+
+Step 4: Ask the user to confirm their date of birth and that they meet the minimum age requirement of 55 years.
+
+Step 5: Offer a guided camera check or liveness check to help confirm that the person is present and reduce fake accounts, impersonation, and account farming.
+
+Important age-verification requirements:
+- Do not use a facial age prediction of 46 as the sole eligibility rule.
+- Do not infer eligibility from appearance alone.
+- Facial age estimation may be evaluated as an optional risk signal, but must not automatically reject legitimate older adults.
+- Use an appropriate, privacy-preserving age-assurance process, with an alternative verification route for users who cannot complete a face check.
+- Do not require Aadhaar or other government identity documents by default.
+- Clearly explain what camera data is collected, why it is needed, how long it is retained, and how users can request deletion.
+- Do not retain raw face images or biometric templates unless strictly necessary, appropriately safeguarded, and legally reviewed.
+- Never expose face-verification results or date of birth to other users.
+- Apply proportionate fraud checks and manual review for uncertain cases.
+
+After verification, let users choose a display name, profile photo, language, broad region, interests, conversation preferences, and optional availability times.
+
+Keep onboarding short. Allow users to skip nonessential profile fields and complete their profiles later.
+
+### 5. MULTILINGUAL EXPERIENCE
+
+Language selection must appear on both the landing page and the registration screen.
+
+Support a scalable internationalization system from day one.
+
+Initial languages:
+- English
+- Hindi
+- Bengali
+- Marathi
+- Tamil
+- Telugu
+- Kannada
+- Malayalam
+- Gujarati
+- Punjabi
+- Odia
+- Assamese
+- Urdu
+
+Architect the system so additional Indian languages can be added without redesigning the application.
+
+Requirements:
+- Translate navigation, onboarding, consent, buttons, error messages, safety instructions, notifications, and help content.
+- Support native scripts, appropriate fonts, long translated strings, and right-to-left layout where required.
+- Offer voice-first navigation and speech input/output wherever supported.
+- Let users switch languages at any time.
+- Allow users to select different languages for the interface, AI companion, and human conversations.
+- Match users using preferred languages, while allowing mutually understood alternatives.
+- Show clear indicators when AI voice translation is being used.
+- Never pretend that translation is perfect. Allow users to repeat, slow down, or turn translation off.
+
+Do not show untranslated English text in a localized experience except for user-generated content or brand names where appropriate.
+
+### 6. THE HOME SCREEN: SIMPLE, WARM AND REASSURING
+
+Create a calm, premium, welcoming interface with a familiar Indian cultural sensibility.
+
+Use warm neutral backgrounds, generous spacing, high contrast, large typography, rounded cards, clear icons, and minimal visual clutter. Avoid childish illustrations, hospital-like imagery, excessive animations, and aggressive notifications.
+
+The home screen should contain five large primary actions:
+
+1. **Talk to My AI Saathi**
+2. **Talk to a New Friend**
+3. **Join a Group Conversation**
+4. **My Friends**
+5. **My Activities**
+
+Include a large, visible language selector and a persistent Help button.
+
+Use clear labels instead of icon-only navigation. Make tap targets at least 48 × 48 CSS pixels wherever possible, with a preferred size of approximately 56 pixels for primary actions.
+
+Support adjustable text size, screen readers, captions, high contrast, reduced motion, and clear focus states.
+
+Use plain, reassuring language. For example:
+- "Would you like to talk to someone?"
+- "Your friend is waiting."
+- "Let's try that again."
+- "You can end the call whenever you wish."
+
+Do not use guilt-inducing reminders or messaging that implies the user has disappointed the app by being inactive.
+
+### 7. AI SAATHI: THE COMPANION EXPERIENCE
+
+Build a multilingual conversational AI companion that can interact through text and natural-sounding voice.
+
+The AI should:
+- Greet the user warmly using their chosen name, if permitted.
+- Ask open-ended questions and listen patiently.
+- Remember user-approved preferences, hobbies, favourite topics, and conversation context.
+- Tell stories, discuss books, music, films, culture, travel, food, and everyday life.
+- Offer gentle breathing exercises, gratitude prompts, light games, quizzes, poetry, and reminiscence activities.
+- Suggest appropriate community events and potential human connections.
+- Help users practise using the app through voice-guided instructions.
+- Speak in the user's chosen language and adapt to their preferred speaking pace.
+- Let users interrupt, repeat, pause, or end a conversation naturally.
+- Offer a choice between a short chat and a longer conversation.
+- Ask before saving personal preferences or creating reminders.
+
+Example conversation:
+AI Saathi: "Namaste! How has your day been? Would you like to share a story, listen to something interesting, or simply talk for a while?"
+
+The AI must be transparent that it is AI, not a human being. It must never claim to be a real friend who has human feelings, to be physically present, or to replace family, friends, or professional care.
+
+Safety requirements:
+- Do not diagnose mental health conditions or present the AI as a therapist.
+- If a user expresses severe distress or possible self-harm, respond compassionately, encourage contact with a trusted person or appropriate professional support, and provide relevant crisis resources where available.
+- Never manipulate users into prolonged sessions, paid upgrades, or emotional dependency.
+- Never use sensitive conversation content to target advertisements.
+- Allow users to view, manage, export where applicable, and delete saved memories and conversation history.
+- Provide a clear option to disable AI memory.
+- Do not claim that conversations are confidential or end-to-end encrypted unless the actual technical implementation supports that claim.
+
+### 8. HUMAN CONNECTION: VOICE AND VIDEO CALLING
+
+Build a real communication experience, not simulated call buttons.
+
+Features:
+- One-tap voice calls.
+- One-tap video calls.
+- Incoming call screen with the caller's name and photo.
+- Large Accept and Decline buttons.
+- Clear microphone, speaker, camera, mute, and end-call controls.
+- Audio-only mode when internet bandwidth is poor.
+- Automatic quality adaptation and reconnection attempts.
+- Optional captions or translated subtitles where technically supported.
+- Clear call connection and disconnection states.
+- No automatic answering, recording, or camera activation.
+- Mutual consent before connecting strangers.
+- User-controlled availability and do-not-disturb settings.
+
+Use a reliable real-time communication provider or WebRTC implementation. Never display a successful connection until the media connection is actually established.
+
+The application should allow users to discover people across India while initially offering language- and interest-compatible connections.
+
+### 9. SMART FRIEND MATCHING
+
+Build a matching engine that prioritizes genuine compatibility and safety.
+
+Users can choose:
+- Preferred languages.
+- Hobbies and interests.
+- Broad location, such as state or city, if they wish to share it.
+- Preferred conversation topics.
+- Preferred time of day.
+- Voice call, video call, or text-first introductions.
+- Whether they prefer one-to-one conversations or group activities.
+- Optional preferences for meeting people of a similar life stage.
+
+Use these signals to suggest compatible people. Do not rank users by attractiveness, skin tone, perceived wealth, disability, or facial age.
+
+Matching requirements:
+- Recommend a small number of relevant profiles instead of endless scrolling.
+- Explain why a person was suggested, such as shared interests or language.
+- Provide an introductory message or conversation starter.
+- Let either person decline without embarrassment.
+- Allow mutual connection requests before stranger calls.
+- Rate-limit invitations and prevent repeated unwanted contact.
+- Provide block, report, mute, and unmatch controls at every relevant interaction.
+- Hide precise location, phone number, and other contact details by default.
+- Avoid exposing online status unless the user opts in.
+
+### 10. SAATH CIRCLE: GROUPS AND ACTIVITIES
+
+Create moderated social spaces organised around shared interests.
+
+Initial categories:
+- Music and old Bollywood songs.
+- Spirituality and reflection, without assuming a user's beliefs.
+- Books, poetry, and storytelling.
+- Travel memories and Indian heritage.
+- Cooking and regional food.
+- Gardening and nature.
+- Languages and cultural exchange.
+- Business experience and life lessons.
+- Yoga, gentle movement, and wellness education.
+- Games, quizzes, and general knowledge.
+
+Features:
+- Scheduled group voice and video sessions.
+- Clear event time, language, host, and participation limits.
+- Join and leave with one tap.
+- Accessible captions where supported.
+- Trained hosts or moderators for public groups.
+- Simple reporting and escalation tools.
+
+Build a recurring "Chai Pe Charcha" community event where people can meet in small, friendly groups.
+
+### 11. TRUST, SAFETY AND ANTI-SCAM PROTECTION
+
+Treat trust as a core product feature, not an afterthought.
+
+Implement:
+- OTP verification and appropriate session security.
+- Rate limits and suspicious-account detection.
+- Moderation queues for reported accounts.
+- Blocking that prevents further direct contact.
+- Reporting categories for harassment, impersonation, fraud, inappropriate content, threats, and unwanted solicitation.
+- Warnings about sharing OTPs, bank details, payment PINs, passwords, and sensitive identity documents.
+- Detection and review of repeated requests for money or suspicious external links, using proportionate safeguards.
+- Clear consent before sharing profile details or initiating calls.
+- A trusted-contact feature that users can activate voluntarily.
+- Accessible emergency and help information.
+- Human review and an appeal mechanism for account restrictions.
+
+Do not automatically contact relatives, police, or emergency services based only on an AI inference. Any escalation must follow a clear, legally reviewed policy.
+
+Do not describe users as "verified" beyond what was actually verified. Distinguish mobile-verified, age-assured, and other verification states where relevant.
+
+### 12. FAMILY ASSISTANCE WITHOUT TAKING AWAY INDEPENDENCE
+
+Allow a user to invite an adult child or trusted person to help with onboarding, accessibility settings, or basic technical support.
+
+This feature must be opt-in and controlled by the older adult.
+
+The older adult must remain in control of:
+- Friend requests.
+- Calls and messages.
+- Profile visibility.
+- Saved AI memories.
+- Privacy settings.
+- Subscription and payment decisions.
+
+Do not automatically share conversations, contacts, location, activity, or emotional disclosures with family members.
+
+### 13. MONETISATION AND BUSINESS MODEL
+
+Build a freemium model that is sustainable without exploiting loneliness.
+
+**Free plan**
+- Basic AI conversations with a reasonable usage allowance.
+- A limited number of friend discovery features.
+- Voice and video calls with other users, subject to fair-use limits.
+- Access to selected community activities.
+- Safety, blocking, reporting, and essential support features.
+
+**ApnaSaath Plus**
+- Higher AI conversation limits.
+- Additional AI voices and supported languages.
+- Personalised activity suggestions.
+- More flexible group participation and scheduling.
+- Optional enhanced accessibility and family-assisted setup tools.
+
+**Community and partner offerings**
+- Paid, clearly labelled workshops and cultural events.
+- Partnerships with senior communities, retirement residences, NGOs, and community organisations.
+- Optional institutional subscriptions for community programmes.
+
+Business rules:
+- Essential safety features must always remain free.
+- Never charge users to block or report someone, access crisis guidance, or control their privacy.
+- Never sell personal conversations, face data, or sensitive emotional information.
+- No deceptive renewals, hidden charges, or manipulative countdowns.
+- Make pricing, cancellation, refunds, and recurring billing easy to understand.
+- Do not promise income or business success from the platform.
+
+Create an admin-configurable pricing system rather than hardcoding prices. Test willingness to pay with actual older adults before setting the final subscription price.
+
+### 14. LANDING PAGE AND CONVERSION
+
+Build a high-trust, mobile-first landing page with language selection immediately visible.
+
+Hero headline:
+"Good conversations. New friendships. A little more joy in every day."
+
+Supporting text:
+"Meet people who share your interests, talk to your AI Saathi, and discover meaningful connections across India — in the language you love."
+
+Primary CTA: "Get Started"
+Secondary CTA: "See How It Works"
+
+Include:
+- A short, accessible demonstration.
+- Three simple steps: Choose your language, create your profile, start connecting.
+- AI companion and human calling explanations.
+- Clear privacy and safety information.
+- Large, readable testimonials only when genuine, consented testimonials exist.
+- A simple FAQ.
+- Transparent pricing.
+- A contact/help section.
+- A separate family-information page explaining optional assistance and privacy.
+- No fabricated user numbers, reviews, endorsements, or success claims.
+
+Make the experience feel dignified, safe, and welcoming rather than clinical or charity-driven.
+
+### 15. TECHNICAL ARCHITECTURE
+
+Use a maintainable, scalable architecture suitable for an Indian consumer application.
+
+Preferred approach:
+- Mobile-first responsive frontend, with a clear path to Android and iOS apps.
+- A mature authentication system supporting OTP and secure account recovery.
+- PostgreSQL or an equivalent relational database.
+- Row-level security or equivalent server-side access control.
+- Real-time communication through a reputable voice/video service or a production-ready WebRTC implementation.
+- A secure backend for matching, moderation, subscriptions, and AI orchestration.
+- An AI provider abstraction so models can be changed without rewriting the application.
+- Speech-to-text and text-to-speech services for supported Indian languages.
+- Secure push notifications with opt-in controls.
+- Monitoring, error tracking, backups, and operational logging.
+- A deployment setup with separate development, staging, and production environments.
+
+Use environment variables and a secret manager for credentials. Never expose private API keys in frontend code.
+
+Use real database persistence. Do not use hardcoded users, simulated verification, mock successful calls, or fake AI responses in production flows.
+
+Document provider dependencies, expected operating costs, rate limits, and fallback behaviour when services fail.
+
+### 16. CORE DATA MODEL
+
+Create suitable database structures for:
+- User accounts and authentication.
+- User profiles and preferences.
+- Language preferences.
+- Verification status and verification audit records.
+- Consent records and privacy settings.
+- Friend requests, connections, and blocked users.
+- Call sessions and connection metadata.
+- AI conversation sessions and user-controlled memories.
+- Groups, events, memberships, and attendance.
+- Reports, moderation cases, and enforcement actions.
+- Subscription plans, entitlements, billing records, and cancellations.
+- Notifications and notification preferences.
+- Audit logs for sensitive administrative actions.
+
+Apply least-privilege access, data minimisation, encryption in transit and at rest, retention limits, and secure deletion workflows.
+
+Keep face-verification data separate from public profile data. Avoid storing raw biometric material unless essential and legally approved.
+
+### 17. ADMINISTRATION AND OPERATIONS
+
+Build a secure, role-based admin dashboard.
+
+Include:
+- Account and verification review.
+- User reports and moderation queues.
+- Group and event management.
+- Language and translation management.
+- Subscription and billing oversight.
+- Technical health and communication-provider status.
+- Abuse and fraud indicators.
+- Aggregate engagement and retention metrics.
+- User support tickets.
+- Data deletion and privacy request workflows.
+- Audit trails for administrator actions.
+
+Limit sensitive-data access to authorised roles. Prefer aggregate analytics and avoid exposing private conversation content to administrators by default.
+
+### 18. LEGAL AND PRIVACY READINESS FOR INDIA
+
+Design the product for compliance review under applicable Indian privacy and technology laws, including the Digital Personal Data Protection Act, 2023 and the Digital Personal Data Protection Rules, 2025, taking account of the applicable commencement and enforcement timelines.
+
+Before launch:
+- Obtain qualified legal review of privacy notices, consent flows, age assurance, biometric processing, AI disclosures, platform responsibilities, and subscription terms.
+- Implement accessible privacy notices and meaningful consent.
+- Provide clear processes for access, correction, deletion, grievance handling, and withdrawal of consent as applicable.
+- Define data retention and deletion schedules.
+- Assess whether cross-border data transfers and third-party AI or communications providers meet applicable requirements.
+- Establish incident response, breach handling, and vendor risk management procedures.
+- Do not claim legal compliance until the implementation has been reviewed and verified.
+
+### 19. PRODUCT ANALYTICS AND IMPACT
+
+Measure whether the application creates meaningful, safe connections.
+
+Track privacy-conscious aggregate metrics such as:
+- Registration completion rate.
+- Time taken to complete onboarding.
+- Successful first AI conversation.
+- Successful first human connection.
+- Call connection success and failure rates.
+- Repeat voluntary conversations.
+- Meaningful connections sustained over time.
+- Participation in group activities.
+- User-reported sense of connection and ease of use.
+- User satisfaction and accessibility issues.
+- Reports, safety incidents, and moderation response times.
+- Free-to-paid conversion, churn, and subscription cancellations.
+
+Make reduction in self-reported loneliness an exploratory outcome, not a guaranteed product claim. Do not infer mental health diagnoses from engagement data.
+
+Do not optimise for screen time alone. Reward meaningful, voluntary connections, user satisfaction, and safety.
+
+### 20. DELIVERY PLAN
+
+Build in four phases.
+
+**Phase 1 — Functional MVP**
+- Localised landing page and registration.
+- Secure authentication and age-assurance workflow.
+- User profile and preferences.
+- AI companion with voice and text.
+- Friend discovery and connection requests.
+- Functional voice/video calling.
+- Blocking, reporting, and basic moderation.
+- Admin dashboard and privacy controls.
+
+**Phase 2 — Community**
+- Interest-based groups.
+- Scheduled community events.
+- Captions and improved language support.
+- Trusted-contact assistance.
+- Better matching and accessibility testing.
+
+**Phase 3 — Commercialisation**
+- Subscription billing.
+- Usage limits and entitlements.
+- Community partnerships.
+- Retention and impact analytics.
+
+**Phase 4 — National Scale**
+- Additional language coverage.
+- Regional community hosts.
+- Improved fraud detection.
+- Performance, reliability, and operational scaling.
+
+Do not attempt to implement every advanced feature at once. Complete and test the core journey before expanding.
+
+### 21. DEFINITION OF DONE
+
+The application is not complete merely because the pages look attractive.
+
+Demonstrate that:
+- A new user can select a language and create an account.
+- The age-assurance process works and has an accessible alternative.
+- The user can create and edit a profile.
+- The user can discover another eligible user and send a connection request.
+- Two consenting users can establish a real voice or video call.
+- The AI companion can hold a real conversation in supported languages.
+- Blocking and reporting work across the relevant user flows.
+- Consent and privacy preferences persist.
+- The interface works on small mobile screens and supports larger text.
+- Sensitive endpoints enforce authorisation server-side.
+- Failures show understandable recovery steps.
+- No production feature falsely reports success when it has failed.
+- Automated tests cover critical authentication, permissions, matching, call, billing, and safety flows.
+- Deployment, configuration, limitations, and operating instructions are documented.
+
+### 22. HOW YOU SHOULD WORK
+
+First, inspect the available development environment and identify the actual stack and integrations available.
+
+Then produce:
+1. A short product architecture and implementation plan.
+2. A polished, clickable user journey.
+3. The working application and database schema.
+4. Required environment variables and provider setup instructions.
+5. Automated tests and a manual QA checklist.
+6. A list of completed features, incomplete features, and external dependencies.
+7. A launch-readiness checklist covering security, privacy, accessibility, moderation, and cost.
+
+Make sensible decisions without repeatedly asking me minor questions. Where a critical third-party credential is missing, implement the correct integration boundary and explain how to configure it. Do not fabricate credentials or claim that an integration is live when it is not.
+
+**Final instruction:** Build ApnaSaath as a dignified, accessible, multilingual, trustworthy companionship platform that older adults would genuinely enjoy using and confidently recommend to their friends. Prioritise real human connection, ease of use, safety, and sustainable growth over gimmicks and vanity metrics.
