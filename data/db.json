@@ -432,6 +432,38 @@
   ],
   "notifications": [
     {
+      "id": "notif_1792604155456",
+      "userId": "user_rameshwar",
+      "type": "friend_request",
+      "title": "New Connection Request from Sunita Kulkarni",
+      "body": "Namaste! I saw that we both share an appreciation for old songs and literature. Would love to be friends on ApnaSaath.",
+      "senderName": "Sunita Kulkarni",
+      "senderAvatar": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&q=80",
+      "senderCity": "Pune",
+      "actionTab": "friends",
+      "actionData": {
+        "fromUserId": "user_sunita"
+      },
+      "isRead": true,
+      "createdAt": "2026-10-21T17:35:55.456Z"
+    },
+    {
+      "id": "notif_1792603819367",
+      "userId": "user_rameshwar",
+      "type": "circle_reminder",
+      "title": "Chai Pe Charcha: Dil Ki Baatein is Live Now!",
+      "body": "Rameshwar Sharma (Moderator) and members have gathered for afternoon tea and nostalgia.",
+      "senderName": "Rameshwar Sharma (Moderator)",
+      "senderAvatar": "/src/assets/images/apnasaath_chai_charcha_1792601943254.jpg",
+      "senderCity": "Community Stage",
+      "actionTab": "circles",
+      "actionData": {
+        "circleId": "circle_chai_pe_charcha"
+      },
+      "isRead": true,
+      "createdAt": "2026-10-21T17:30:19.367Z"
+    },
+    {
       "id": "notif_1792603429377",
       "userId": "user_rameshwar",
       "type": "friend_request",
@@ -441,7 +473,7 @@
       "senderAvatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
       "senderCity": "Kochi",
       "actionTab": "friends",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2026-10-21T17:23:49.377Z"
     }
   ]

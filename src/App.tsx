@@ -8,6 +8,7 @@ import {
   Shield,
   PhoneCall,
   Volume2,
+  CheckCheck,
 } from 'lucide-react';
 import { SupportedLanguage, TRANSLATIONS, speakText } from './i18n';
 import { Header } from './components/Header';
@@ -180,16 +181,50 @@ export default function App() {
     }
   };
 
-  const handleToastAction = async (toast: ToastItem) => {
+  const handleToastAction = async (
+    toast: ToastItem,
+    actionType?: 'view_request' | 'reply' | 'join' | 'accept' | 'call'
+  ) => {
     await handleToastDismiss(toast.id);
-    if (toast.actionTab) {
-      setActiveTab(toast.actionTab);
-    } else {
+
+    if (actionType === 'accept') {
+      if (toast.actionData?.requestId) {
+        try {
+          await fetch('/api/connections/respond', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requestId: toast.actionData.requestId, action: 'accept' }),
+          });
+          loadConnections();
+          loadAllUsers();
+        } catch (e) {
+          // silent
+        }
+      }
       setActiveTab('friends');
+      speakText(`${toast.senderName || 'Friend'} invitation accepted.`, currentLanguage);
+    } else if (actionType === 'reply') {
+      setActiveTab('saathi');
+    } else if (actionType === 'join') {
+      setActiveTab('circles');
+    } else if (actionType === 'call') {
+      setActiveTab('friends');
+      if (toast.actionData?.fromUserId) {
+        const friend = allUsers.find((u) => u.id === toast.actionData.fromUserId);
+        if (friend) {
+          handleStartCall(friend, 'voice');
+        }
+      }
+    } else {
+      if (toast.actionTab) {
+        setActiveTab(toast.actionTab);
+      } else {
+        setActiveTab('friends');
+      }
     }
   };
 
-  const handleSimulateNotification = async (type: 'friend_request' | 'message') => {
+  const handleSimulateNotification = async (type: 'friend_request' | 'message' | 'circle_reminder') => {
     try {
       const res = await fetch('/api/notifications/simulate', {
         method: 'POST',
@@ -215,6 +250,19 @@ export default function App() {
       setActiveToasts([]);
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const handleMarkAllNotificationsRead = async () => {
+    // 1. Optimistically update local state so the UI reflects change instantly
+    setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
+    setActiveToasts([]);
+
+    // 2. Persist update on the server
+    try {
+      await fetch('/api/notifications/mark-all-read', { method: 'POST' });
+    } catch (e) {
+      console.error('Failed to mark all notifications as read on server:', e);
     }
   };
 
@@ -353,8 +401,39 @@ export default function App() {
         notifications={notifications}
         onSimulateNotification={handleSimulateNotification}
         onClearNotifications={handleClearNotifications}
+        onMarkAllNotificationsRead={handleMarkAllNotificationsRead}
         onSelectNotification={handleSelectNotification}
       />
+
+      {/* Social Notification Header Bar */}
+      {notifications.length > 0 && notifications.some((n) => !n.isRead) && (
+        <div
+          role="region"
+          aria-label="Notification header"
+          className={`px-4 py-2 flex items-center justify-between text-xs sm:text-sm border-b transition-colors ${
+            highContrast
+              ? 'bg-amber-950/90 text-amber-200 border-amber-400'
+              : 'bg-amber-100/90 text-amber-950 border-amber-300/80 shadow-2xs'
+          }`}
+        >
+          <div className="flex items-center gap-2 max-w-xl">
+            <span className="w-2.5 h-2.5 rounded-full bg-orange-600 animate-pulse shrink-0" />
+            <span className="font-semibold truncate">
+              {notifications.filter((n) => !n.isRead).length} unread notification{notifications.filter((n) => !n.isRead).length > 1 ? 's' : ''}
+            </span>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={handleMarkAllNotificationsRead}
+              aria-label="Mark all existing notifications as read"
+              className="px-3 py-1 rounded-lg bg-amber-800 hover:bg-amber-900 text-white font-medium text-xs flex items-center gap-1.5 transition-colors shadow-2xs cursor-pointer min-h-[36px]"
+            >
+              <CheckCheck className="w-3.5 h-3.5" />
+              <span>Mark all as read</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Main View Area */}
       <main className="flex-1 pb-20 lg:pb-8">

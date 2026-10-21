@@ -15,6 +15,8 @@ import {
   UserPlus,
   MessageSquare,
   Sparkles,
+  Radio,
+  CheckCheck,
 } from 'lucide-react';
 import { SupportedLanguage, SUPPORTED_LANGUAGES, TRANSLATIONS, speakText } from '../i18n';
 
@@ -34,8 +36,9 @@ interface HeaderProps {
   activeTab: string;
   onSelectTab: (tab: string) => void;
   notifications: any[];
-  onSimulateNotification: (type: 'friend_request' | 'message') => void;
+  onSimulateNotification: (type: 'friend_request' | 'message' | 'circle_reminder') => void;
   onClearNotifications: () => void;
+  onMarkAllNotificationsRead?: () => void;
   onSelectNotification: (item: any) => void;
 }
 
@@ -57,6 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
   notifications,
   onSimulateNotification,
   onClearNotifications,
+  onMarkAllNotificationsRead,
   onSelectNotification,
 }) => {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
@@ -285,7 +289,11 @@ export const Header: React.FC<HeaderProps> = ({
 
             {notifDropdownOpen && (
               <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white dark:bg-stone-900 shadow-xl border border-stone-200 dark:border-stone-700 p-3 z-50 space-y-2">
-                <div className="flex items-center justify-between pb-2 border-b border-stone-100 dark:border-stone-800">
+                <div
+                  role="region"
+                  aria-label="Notification header"
+                  className="flex items-center justify-between pb-2 border-b border-stone-100 dark:border-stone-800"
+                >
                   <div className="font-serif font-bold text-sm text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
                     <Bell className="w-4 h-4 text-amber-800" />
                     <span>Social Notifications</span>
@@ -295,14 +303,33 @@ export const Header: React.FC<HeaderProps> = ({
                       </span>
                     )}
                   </div>
-                  {notifications.length > 0 && (
-                    <button
-                      onClick={onClearNotifications}
-                      className="text-[11px] text-stone-400 hover:text-stone-700"
-                    >
-                      Clear All
-                    </button>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {onMarkAllNotificationsRead && (
+                      <button
+                        onClick={onMarkAllNotificationsRead}
+                        disabled={notifications.length === 0 || unreadCount === 0}
+                        aria-label="Mark all existing notifications as read"
+                        title="Mark all notifications as read"
+                        className={`text-[11px] font-semibold px-2 py-0.5 rounded-lg transition-colors flex items-center gap-1 ${
+                          unreadCount > 0
+                            ? 'text-amber-800 hover:text-amber-950 dark:text-amber-300 dark:hover:text-amber-100 bg-amber-100/80 hover:bg-amber-200/90 dark:bg-amber-950/70 border border-amber-300 dark:border-amber-700 cursor-pointer'
+                            : 'text-stone-400 dark:text-stone-500 cursor-not-allowed opacity-60'
+                        }`}
+                      >
+                        <CheckCheck className="w-3 h-3 text-amber-800 dark:text-amber-300" />
+                        <span>Mark all read</span>
+                      </button>
+                    )}
+                    {notifications.length > 0 && (
+                      <button
+                        onClick={onClearNotifications}
+                        className="text-[11px] text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
+                        title="Clear all notifications"
+                      >
+                        Clear All
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Instant Social Interaction Simulator (for easy testing) */}
@@ -311,26 +338,36 @@ export const Header: React.FC<HeaderProps> = ({
                     <Sparkles className="w-3 h-3 text-amber-700" />
                     <span>Test Toast Notifications</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 pt-1">
                     <button
                       onClick={() => {
                         onSimulateNotification('friend_request');
                         setNotifDropdownOpen(false);
                       }}
-                      className="flex-1 py-1.5 px-2 rounded-lg bg-amber-800 hover:bg-amber-900 text-white text-[11px] font-bold transition-colors shadow-2xs flex items-center justify-center gap-1"
+                      className="py-1.5 px-2 rounded-lg bg-amber-800 hover:bg-amber-900 text-white text-[11px] font-bold transition-colors shadow-2xs flex items-center justify-center gap-1"
                     >
                       <UserPlus className="w-3 h-3" />
-                      <span>+ Friend Request</span>
+                      <span>+ Friend</span>
                     </button>
                     <button
                       onClick={() => {
                         onSimulateNotification('message');
                         setNotifDropdownOpen(false);
                       }}
-                      className="flex-1 py-1.5 px-2 rounded-lg bg-white hover:bg-stone-100 border border-stone-300 text-stone-800 text-[11px] font-bold transition-colors flex items-center justify-center gap-1"
+                      className="py-1.5 px-2 rounded-lg bg-white hover:bg-stone-100 border border-stone-300 text-stone-800 text-[11px] font-bold transition-colors flex items-center justify-center gap-1"
                     >
                       <MessageSquare className="w-3 h-3 text-blue-700" />
                       <span>+ Message</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        onSimulateNotification('circle_reminder');
+                        setNotifDropdownOpen(false);
+                      }}
+                      className="py-1.5 px-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-[11px] font-bold transition-colors flex items-center justify-center gap-1"
+                    >
+                      <Radio className="w-3 h-3 text-emerald-200" />
+                      <span>+ Circle</span>
                     </button>
                   </div>
                 </div>

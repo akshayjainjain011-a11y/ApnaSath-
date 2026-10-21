@@ -434,6 +434,36 @@ app.post('/api/notifications/:id/read', (req: Request, res: Response) => {
   return res.json({ success: true });
 });
 
+app.post('/api/notifications/mark-all-read', (req: Request, res: Response) => {
+  const data = db.get();
+  let updatedCount = 0;
+  (data.notifications || []).forEach((n) => {
+    if (n.userId === currentActiveUserId && !n.isRead) {
+      n.isRead = true;
+      updatedCount++;
+    }
+  });
+  if (updatedCount > 0) {
+    db.save(data);
+  }
+  return res.json({ success: true, updatedCount });
+});
+
+app.post('/api/notifications/read-all', (req: Request, res: Response) => {
+  const data = db.get();
+  let updatedCount = 0;
+  (data.notifications || []).forEach((n) => {
+    if (n.userId === currentActiveUserId && !n.isRead) {
+      n.isRead = true;
+      updatedCount++;
+    }
+  });
+  if (updatedCount > 0) {
+    db.save(data);
+  }
+  return res.json({ success: true, updatedCount });
+});
+
 app.post('/api/notifications/clear', (req: Request, res: Response) => {
   const data = db.get();
   data.notifications = (data.notifications || []).filter((n) => n.userId !== currentActiveUserId);
@@ -467,6 +497,22 @@ app.post('/api/notifications/simulate', (req: Request, res: Response) => {
       isRead: false,
       createdAt: new Date().toISOString(),
     };
+  } else if (type === 'circle_reminder') {
+    const liveCircle = (data.circles || []).find((c) => c.isLiveNow) || data.circles[0];
+    notif = {
+      id: `notif_${Date.now()}`,
+      userId: currentActiveUserId,
+      type: 'circle_reminder',
+      title: `${liveCircle?.title || 'Chai Pe Charcha'} is Live Now!`,
+      body: `${liveCircle?.hostName || 'Host'} and members have gathered for afternoon tea and nostalgia.`,
+      senderName: liveCircle?.hostName || 'Saath Circle Host',
+      senderAvatar: liveCircle?.image || '/src/assets/images/apnasaath_chai_charcha_1792601943254.jpg',
+      senderCity: 'Community Stage',
+      actionTab: 'circles',
+      actionData: { circleId: liveCircle?.id },
+      isRead: false,
+      createdAt: new Date().toISOString(),
+    };
   } else {
     notif = {
       id: `notif_${Date.now()}`,
@@ -478,6 +524,7 @@ app.post('/api/notifications/simulate', (req: Request, res: Response) => {
       senderAvatar: sender.avatar,
       senderCity: sender.city,
       actionTab: 'friends',
+      actionData: { fromUserId: sender.id },
       isRead: false,
       createdAt: new Date().toISOString(),
     };
